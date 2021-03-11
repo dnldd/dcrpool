@@ -235,8 +235,9 @@ func (m *Miner) process(ctx context.Context) {
 				resp := msg.(*pool.Response)
 				method := m.fetchRequest(resp.ID)
 				if method == "" {
-					log.Errorf("no request found for response "+
-						"with id: %d", resp.ID)
+
+					log.Errorf("no request found for response with id: "+
+						"%d, %s", resp.ID, resp.String())
 					m.cancel()
 					continue
 				}
